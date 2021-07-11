@@ -5,6 +5,7 @@
     git clone https://github.com/opetstudio/boxbilling-system.git
     cd boxbilling-system
     rm boxbilling/src/bb-config.php
+    rm landingpage/composer.lock
     make all
 ```
 ### Access
