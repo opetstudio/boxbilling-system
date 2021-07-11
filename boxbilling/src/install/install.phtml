@@ -143,7 +143,7 @@
                             <div class="rowElem nobg">
                                 <label>Database hostname:</label>
                                 <div class="formRight">
-                                    <input type="text" id="db_host" name="db_host" value="{{ db_host|default('mysql') }}" required="required" placeholder="mysql"/>
+                                    <input type="text" id="db_host" name="db_host" value="{{ db_host|default('localhost') }}" required="required" placeholder="localhost"/>
                                 </div>
                                 <div class="fix"></div>
                             </div>
@@ -157,14 +157,14 @@
                             <div class="rowElem">
                                 <label>Database user:</label>
                                 <div class="formRight">
-                                    <input type="text" id="db_user" name="db_user" value="{{ request.db_user|default(db_user) }}" required="required" placeholder="root"/>
+                                    <input type="text" id="db_user" name="db_user" value="{{ request.db_user|default(db_user) }}" required="required" placeholder="username"/>
                                 </div>
                                 <div class="fix"></div>
                             </div>
                             <div class="rowElem">
                                 <label>Database password:</label>
                                 <div class="formRight">
-                                    <input type="password" id="db_pass" name="db_pass" value="{{ request.db_pass|default(db_pass) }}" placeholder="password123"/>
+                                    <input type="password" id="db_pass" name="db_pass" value="{{ request.db_pass|default(db_pass) }}" placeholder="******"/>
                                 </div>
                                 <div class="fix"></div>
                             </div>

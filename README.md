@@ -4,7 +4,6 @@
 ```bash
     git clone https://github.com/opetstudio/boxbilling-system.git
     cd boxbilling-system
-    rm landingpage/installed
     rm boxbilling/src/bb-config.php
     make all
 ```

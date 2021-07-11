@@ -42,12 +42,13 @@ services:
         networks:
             backend:
         depends_on:
-            - database
+            - mysql
         # restart: mysql
     mysql:
         image: 'mysql:8.0'
         ports:
             - '${FORWARD_DB_PORT:-3306}:3306'
+        command: --init-file /data/application/init.sql
         environment:
             MYSQL_ROOT_PASSWORD: 'password123'
             MYSQL_DATABASE: 'landingpageDb'
@@ -55,6 +56,7 @@ services:
             MYSQL_PASSWORD: 'password123'
             MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
         volumes:
+            - "./landingpage/resources/schema/init.sql:/data/application/init.sql"
             - "./landingpage/resources/docker/config/my.cfg:/etc/mysql/conf.d/config-file.cnf"
             - "./landingpage/resources/schema/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql"
             - 'mysql:/var/lib/mysql'

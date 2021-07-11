@@ -12,6 +12,7 @@ all: start-recreate reinstall
 start:          ## Start app
 	$(DOCKER_COMPOSE) up -d
 ifeq (,$(wildcard ./landingpage/composer.lock))
+	cp ./landingpage/config/env.example.php ./landingpage/config/env.php
 	$(DOCKER_LANDINGPAGE_CONTAINER_EXEC) composer install
 	$(DOCKER_LANDINGPAGE_CONTAINER_EXEC) vendor/bin/phoenix migrate
 # $(DOCKER_LANDINGPAGE_CONTAINER_EXEC) vendor/bin/phinx migrate -t 20160111202556

@@ -19,8 +19,10 @@
 require __DIR__ . '/local.dev.php';
 
 // Database
-$settings['db']['username'] = 'root';
-$settings['db']['password'] = '';
+$settings['db']['host'] = $_ENV['DB_HOST'];
+$settings['db']['database'] = $_ENV['DB_NAME'];
+$settings['db']['username'] = $_ENV['DB_USER'];
+$settings['db']['password'] = $_ENV['DB_PASS'];
 
 $settings['api_auth'] = [
     'users' => [
@@ -28,3 +30,4 @@ $settings['api_auth'] = [
         'api-user' => 'secret',
     ],
 ];
+
