@@ -13,7 +13,8 @@ start:          ## Start app
 	$(DOCKER_COMPOSE) up -d
 ifeq (,$(wildcard ./landingpage/composer.lock))
 	$(DOCKER_LANDINGPAGE_CONTAINER_EXEC) composer install
-	$(DOCKER_LANDINGPAGE_CONTAINER_EXEC) vendor/bin/phinx migrate -t 20160111202556
+	$(DOCKER_LANDINGPAGE_CONTAINER_EXEC) vendor/bin/phoenix migrate
+# $(DOCKER_LANDINGPAGE_CONTAINER_EXEC) vendor/bin/phinx migrate -t 20160111202556
 endif
 ifeq (,$(wildcard ./boxbilling/src/bb-config.php))
 	cp ./boxbilling/src/bb-config-sample.php ./boxbilling/src/bb-config.php

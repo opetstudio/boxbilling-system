@@ -55,6 +55,8 @@ services:
             MYSQL_PASSWORD: 'password123'
             MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
         volumes:
+            - "./resources/docker/config/my.cfg:/etc/mysql/conf.d/config-file.cnf"
+            - "./resources/schema/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql"
             - 'mysql:/var/lib/mysql'
         networks:
             backend:
