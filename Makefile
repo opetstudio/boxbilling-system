@@ -19,6 +19,9 @@ ifeq (,$(wildcard ./landingpage/composer.lock))
 endif
 ifeq (,$(wildcard ./boxbilling/src/bb-config.php))
 	cp ./boxbilling/src/bb-config-sample.php ./boxbilling/src/bb-config.php
+	mkdir -p ./boxbilling/src/bb-data/log
+	mkdir -p ./boxbilling/src/bb-data/cache
+	mkdir -p ./boxbilling/src/bb-data/uploads
 # $(DOCKER_BOXBILLING_CONTAINER_EXEC) $(DOCKER_BOXBILLING_EXECUTABLE_CMD) ./boxbilling/bin/prepare.php
 endif
 
