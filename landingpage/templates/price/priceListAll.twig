@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LANDING PAGE</title>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.35.0/swagger-ui.min.css"
+        integrity="sha512-jsql70MmFqKJfWGCXmi3GHPP2q2oi3Ad+6PRQWNeo6df+rxKB07IuBvcCXSrpgKPXaikkQgEQVO2YrtgmSJhUw=="
+        crossorigin="anonymous" />
+</head>
+<body>
+    <h1>Home Page</h1>
+    <h1>All Prices</h1>
+
+    <p><a href="/price/new">Add new price</a></p>
+
+    <table class="pure-table">
+        <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+        {% if prices|length > 0 %}
+            {% set odd=true %}
+            {% for price in prices %}
+                <tr {{ odd ? 'class="pure-table-odd"': '' }}>
+                    <td>{{ price.getTitle() }}</td>
+                    <td>{{ price.getPrice() }}</td>
+                    <td>{{ price.getShortDescription() }}</td>
+                    <td><a href="{{ url_for('price-detail', { 'id': price.getId() }) }}">detail</a></td>
+                </tr>
+                {% set odd = odd ? false : true %}
+            {% endfor %}
+        {% endif %}
+    </table>
+
+</body>
+</html>
+
+
+
