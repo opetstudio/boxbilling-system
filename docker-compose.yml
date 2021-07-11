@@ -27,9 +27,8 @@ services:
             backend:
         depends_on:
             - mysql
-    # restart: always
+        # restart: always
     boxbilling:
-        # image: chialab/php:7.4-fpm
         build:
             context: ./boxbilling
             dockerfile: Dockerfile
@@ -45,15 +44,6 @@ services:
         depends_on:
             - database
         # restart: mysql
-    # database:
-    #     image: mysql:5
-    #     ports:
-    #     - 3306:3306
-    #     environment:
-    #         MYSQL_ROOT_PASSWORD: root
-    #     networks:
-    #     backend:
-    #     restart: always
     mysql:
         image: 'mysql:8.0'
         ports:
@@ -78,7 +68,3 @@ networks:
 volumes:
     mysql:
         driver: local
-    # landingpage:
-    #     driver: local
-    # boxbilling:
-    #     driver: local
