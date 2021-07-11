@@ -8,7 +8,7 @@ boxbilling/src/bb-config*
 boxbilling/src/bb-data/log/*
 boxbilling/src/bb-data/cache/*
 boxbilling/src/bb-data/tmp.txt
-boxbilling/src/bb-vendor/*
+# boxbilling/src/bb-vendor/*
 boxbilling/src/bb-test.php
 boxbilling/src/install/logs/*
 boxbilling/src/.htaccess
