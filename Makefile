@@ -11,9 +11,9 @@ DOCKER_BOXBILLING_EXECUTABLE_CMD = php -dmemory_limit=1G
 all: start-recreate reinstall
 start:          ## Start app
 	$(DOCKER_COMPOSE) up -d
-ifeq (,$(wildcard ./landingpage/installed))
+ifeq (,$(wildcard ./landingpage/composer.lock))
+	$(DOCKER_LANDINGPAGE_CONTAINER_EXEC) composer install
 	$(DOCKER_LANDINGPAGE_CONTAINER_EXEC) vendor/bin/phinx migrate -t 20160111202556
-	touch landingpage/installed
 endif
 ifeq (,$(wildcard ./boxbilling/src/bb-config.php))
 	cp ./boxbilling/src/bb-config-sample.php ./boxbilling/src/bb-config.php

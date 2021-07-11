@@ -11,7 +11,7 @@
 ### Access
 
     - landingpage: http://localhost:8081
-    - boxbilling: http://localhost:8081/install/index.php
+    - boxbilling: http://localhost:8004/install/index.php
         - Database hostname: mysql
         - Database name: boxbilling
         - Database user: root

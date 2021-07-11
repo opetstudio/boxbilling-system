@@ -1,0 +1,45 @@
+<html>
+<head>
+    <title>Example Application</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+</head>
+<body>
+<h1>All Prices</h1>
+
+<p><a href="/price/new">Add new price</a></p>
+
+<?php
+if(count($prices) > 0):
+?>
+<table class="pure-table">
+    <tr>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Actions</th>
+    </tr>
+
+<?php
+    $odd = true;
+    foreach($prices as $price): ?>
+
+        <tr <?=$odd ? "class=\"pure-table-odd\"" : ""; ?>>
+        <td><?=$price->getTitle() ?></td>
+        <td><?=$price->getPrice() ?></td>
+        <td><?=$price->getShortDescription() ?> ...</td>
+        <td>
+            <a href="<?=$router->pathFor('price-detail', ['id' => $price->getId()])?>">view</a>
+        </td>
+    </tr>
+
+<?php 
+    $odd = $odd ? false : true;
+    endforeach; ?>
+</table>
+<?php else: ?>
+<p>No current tickets</p>
+<?php endif; ?>
+
+</body>
+</html>
+

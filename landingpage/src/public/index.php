@@ -32,7 +32,7 @@ $container['db'] = function ($c) {
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     return $pdo;
 };
-
+// tickets module
 $app->get('/tickets', function (Request $request, Response $response) {
     $this->logger->addInfo("Ticket list");
     $mapper = new TicketMapper($this->db);
@@ -77,5 +77,41 @@ $app->get('/ticket/{id}', function (Request $request, Response $response, $args)
     $response = $this->view->render($response, "ticketdetail.phtml", ["ticket" => $ticket]);
     return $response;
 })->setName('ticket-detail');
+
+// prices module
+$app->get('/prices', function (Request $request, Response $response) {
+    $this->logger->addInfo("prices list");
+    $mapper = new PriceMapper($this->db);
+    $prices = $mapper->getPrices();
+
+    $response = $this->view->render($response, "prices.phtml", ["prices" => $prices, "router" => $this->router]);
+    return $response;
+});
+$app->get('/price/new', function (Request $request, Response $response) {
+    $response = $this->view->render($response, "priceadd.phtml");
+    return $response;
+});
+$app->post('/price/new', function (Request $request, Response $response) {
+    $data = $request->getParsedBody();
+    $price_data = [];
+    $price_data['title'] = filter_var($data['title'], FILTER_SANITIZE_STRING);
+    $price_data['description'] = filter_var($data['description'], FILTER_SANITIZE_STRING);
+    $price_data['price'] = filter_var($data['price'], FILTER_SANITIZE_STRING);
+
+    $price = new PriceEntity($price_data);
+    $price_mapper = new PriceMapper($this->db);
+    $price_mapper->save($price);
+
+    $response = $response->withRedirect("/prices");
+    return $response;
+});
+$app->get('/price/{id}', function (Request $request, Response $response, $args) {
+    $price_id = (int)$args['id'];
+    $mapper = new PriceMapper($this->db);
+    $price = $mapper->getPriceById($price_id);
+
+    $response = $this->view->render($response, "pricedetail.phtml", ["price" => $price]);
+    return $response;
+})->setName('price-detail');
 
 $app->run();
