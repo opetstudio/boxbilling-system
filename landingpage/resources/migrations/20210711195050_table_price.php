@@ -14,6 +14,30 @@ class TablePrice extends AbstractMigration
             ->addColumn('description', 'string', ['null' => true])
             ->addColumn('price', 'integer', ['null' => true])
             ->create();
+
+            $this->insert('prices', [
+                [
+                    'title' => 'Bayi',
+                    'description' => '938 Pengguna Terdaft',
+                    'price' => 14900,
+                ],
+                [
+                    'title' => 'Pelajar',
+                    'description' => '938 Pengguna Terdaft',
+                    'price' => 23450,
+                ],
+                [
+                    'title' => 'Personal',
+                    'description' => '2X RESOURCE POWER',
+                    'price' => 38900,
+                ],
+                [
+                    'title' => 'Bisnis',
+                    'description' => '3552 Pengguna Terdaftar',
+                    'price' => 65900,
+                ],
+            ]);
+        
     }
 
     protected function down(): void

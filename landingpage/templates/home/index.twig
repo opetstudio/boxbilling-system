@@ -1,19 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>LANDING PAGE</title>
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.35.0/swagger-ui.min.css"
-        integrity="sha512-jsql70MmFqKJfWGCXmi3GHPP2q2oi3Ad+6PRQWNeo6df+rxKB07IuBvcCXSrpgKPXaikkQgEQVO2YrtgmSJhUw=="
-        crossorigin="anonymous" />
+    {{ block("head", "_blocks/head.twig") }}
 </head>
 <body>
-    <h1>Home Page</h1>
+    
+      <header class="blog-header py-3">
+        <div class="container">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+                <div class="col-6 pt-1">
+                    <a class="text-muted" href="#">Subscribe</a>
+                </div>
+                {# <div class="col-4 text-center">
+                    <a class="blog-header-logo text-dark" href="#">Large</a>
+                </div> #}
+                <div class="col-6 d-flex justify-content-end align-items-center">
+                    {# <a class="text-muted" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
+                    </a>
+                    <a class="btn btn-sm btn-outline-secondary" href="#">0274-5305505</a>
+                    <a class="text-muted" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
+                    </a>
+                    <a class="btn btn-sm btn-outline-secondary" href="#">Live Chat</a> #}
+                    <div class="member-area-top"></div>
+                    {# <a class="btn btn-sm btn-outline-secondary" href="#">Member Area</a> #}
+                </div>
+            </div>
+        </div>
+      </header>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+        <div class="container">
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample09">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Hosting <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Domain</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Server</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Website</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Afiliasi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Promo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pembayaran</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Review</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Kontak</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Blog</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+            <h1>PHP Hosting</h1>
+            <h3>Cepat, handal, penuh dengan modul PHP yang anda butuhkan</h3>
+        </div>
+        <div class="col-md-6">
+            <div class="gambar-right1"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+            <div class="gambar-right2"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+            <h3>Paket Hosting Singapura yang Tepat</h3>
+            <span>Diskon 40% + Domain dan SSL Gratis untuk Anda</span>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        
+            
+            {# <img src="..." class="card-img-top" alt="..."> #}
+            {% set odd=true %}
+            {% for price in prices %}
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ price.getTitle() }}</h5>
+                            <p class="card-text">{{ price.getShortDescription() }}</p>
+                            <a href="#" class="btn btn-primary">{{ price.getPrice() }}</a>
+                        </div>
+                    </div>
+                </div>
+                {# <tr {{ odd ? 'class="pure-table-odd"': '' }}>
+                    <td>{{ price.getTitle() }}</td>
+                    <td>{{ price.getPrice() }}</td>
+                    <td>{{ price.getShortDescription() }}</td>
+                    <td><a href="{{ url_for('price-detail', { 'id': price.getId() }) }}">detail</a></td>
+                </tr> #}
+                {% set odd = odd ? false : true %}
+            {% endfor %}
+                
+        
+      </div>
+      <hr />
+    </div>
+    <footer class="blog-footer">
+      <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="{{ base_url }}/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="{{ base_url }}/assets/js/vendor/popper.min.js"></script>
+    <script src="{{ base_url }}/dist/js/bootstrap.min.js"></script>
+    <script src="{{ base_url }}/assets/js/vendor/holder.min.js"></script>
+    <script>
+      Holder.addTheme('thumb', {
+        bg: '#55595c',
+        fg: '#eceeef',
+        text: 'Thumbnail'
+      });
+    </script>
+    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="250" viewBox="0 0 200 250" preserveAspectRatio="none" style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs><style type="text/css"></style></defs><text x="0" y="13" style="font-weight:bold;font-size:13pt;font-family:Arial, Helvetica, Open Sans, sans-serif">Thumbnail</text></svg>
+    {# <h1>Home Page</h1>
     <h1>All Prices</h1>
 
-    <p><a href="/price/new">Add new price</a></p>
+    <p><a href="{{ base_url }}/price/new">Add new price</a></p>
 
     <table class="pure-table">
         <tr>
@@ -34,7 +166,7 @@
                 {% set odd = odd ? false : true %}
             {% endfor %}
         {% endif %}
-    </table>
+    </table> #}
 
 </body>
 </html>
